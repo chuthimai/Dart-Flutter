@@ -1,6 +1,6 @@
 # quiz
 
-A new Flutter project.
+Choose answers and has a result page to summary
 
 ## Getting Started
 
@@ -14,3 +14,17 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Struct
+
+- model contain basic class: 
+  - quiz_question.dart -> struct of question include: answers(List) and question(String)
+- data:
+  - questions.dart -> all questions and answers
+- answer_button.dart -> button form
+- styled.dart -> text form
+- start_screen.dart
+- question_screen.dart
+- results_screen.dart
+- quiz.dart -> control to transform between pages: StartScreen => QuestionsScreen => ResultsScreen
+- questions_summary.dart -> form of a result question
