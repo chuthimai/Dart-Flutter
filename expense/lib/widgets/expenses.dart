@@ -20,6 +20,7 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true, // lop phu phu het toan man hinh
       context: context,
       builder: (cxt) => NewExpense(
@@ -58,6 +59,9 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
     );
@@ -81,18 +85,37 @@ class _ExpensesState extends State<Expenses> {
               icon: const Icon(Icons.add))
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Chart(expenses: _registeredExpenses,),
-            Expanded(
-              child: mainContent,
+      body: width < height
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Chart(
+                    expenses: _registeredExpenses,
+                  ),
+                  Expanded(
+                    child: mainContent,
+                  ),
+                ],
+              ),
+            )
+          : Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Chart(
+                      expenses: _registeredExpenses,
+                    ),
+                  ),
+                  Expanded(
+                    child: mainContent,
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
       // backgroundColor: ,
     );
   }
