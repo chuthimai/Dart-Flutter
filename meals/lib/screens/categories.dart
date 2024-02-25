@@ -26,11 +26,11 @@ class _CategoriesScreenState extends State<CategoriesScreen>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(microseconds: 300),
+      duration: const Duration(milliseconds: 3000),
       lowerBound: 0,
       upperBound: 1,
     );
-    _animationController.forward();
+    _animationController.forward(); // bat animation
   }
 
   @override
@@ -75,10 +75,17 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             )
         ],
       ),
-      builder: (context, child) => Padding(
-        padding: EdgeInsets.only(
-          top: _animationController.value * 100,
+      builder: (context, child) => SlideTransition(
+        position:Tween(
+          begin: const Offset(0, 0.3),
+          end: const Offset(0, 0),
+        ).animate(
+          CurvedAnimation(
+            parent: _animationController,
+            curve: Curves.easeInOut,
+          ),
         ),
+        child: child,
       ),
     );
   }

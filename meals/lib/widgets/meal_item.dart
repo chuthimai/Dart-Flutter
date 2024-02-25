@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
@@ -21,11 +22,14 @@ class MealItem extends StatelessWidget {
         onTap: selectMeal,
         child: Stack(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.fill,
-              width: double.infinity, // anh phu het chieu ngang
+            Hero(
+              tag: meal.id, // phan biet giua cac anh
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.fill,
+                width: double.infinity, // anh phu het chieu ngang
+              ),
             ),
             Positioned(
               bottom: 0,
