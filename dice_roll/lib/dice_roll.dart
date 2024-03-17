@@ -49,6 +49,7 @@ class _DiceRollSate extends State<DiceRoll> {
               backgroundColor: Colors.white,
               textStyle: const TextStyle(fontSize: 25),
               // padding: const EdgeInsets.all(20),
+              // style  button
             ),
             child: const Text("Roll Dice")
         )
